@@ -3,6 +3,8 @@ import './App.css';
 import Title from './Title';
 import Square from './square';
 import Button from './button';
+import LikeButton from './like-button';
+import SearchButton from './search-button';
 
 class App extends Component {
  
@@ -19,7 +21,8 @@ class App extends Component {
           <Square/>
         </div>
 
-        <Button>Texto Children</Button>
+        <LikeButton />
+        <SearchButton />
         
         <Title name='Karen' age={23} />  
         <label htmlFor='input'>Input</label>
