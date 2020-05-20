@@ -7,7 +7,12 @@ import LikeButton from './like-button';
 import SearchButton from './search-button';
 
 class App extends Component {
- 
+  constructor() {
+     super()
+     this.state = {
+       color: 'green'
+     }
+  }
   render() {
     return (
       <div className="container">
@@ -20,9 +25,23 @@ class App extends Component {
         }}>
           <Square/>
         </div>
-
+        <Square color={this.state.color} />
+        {['red', 'blue', 'green'].map((color) => ( 
+          <Button 
+            key={color} 
+            handleClick={() => this.setState({color})}>
+            {color}
+          </Button>
+        ))}
+      
         <LikeButton />
         <SearchButton />
+
+        <div onClick={() => this.setState({
+           text: 'Outro texto'
+        })}>
+          {this.state.text}
+        </div>
         
         <Title name='Karen' age={23} />  
         <label htmlFor='input'>Input</label>
