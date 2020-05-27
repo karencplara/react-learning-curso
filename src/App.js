@@ -13,7 +13,9 @@ class App extends Component {
      this.state = {
        color: 'green', 
        showTimer: true, 
-       time : 0
+       time : 0, 
+       value: 'Valor inicial',
+       checked: false
      }
   }
   componentWillMount(){  //lado servidor
@@ -26,7 +28,33 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+          {/* Formulário */}
+         <div>
+           <form>
+               {/* defaultValue coloca um valor inicial e deixa alterar sem precisar o state */}
+              <input  type='text' value={this.state.value} onChange={(e) => {
+                  this.setState({
+                      value: e.target.value
+                  })
+              }} />
+             <label>
+               <input 
+                  type="checkbox" 
+                  value='my-checkbox' 
+                  checked={this.state.checked}
+                  onChange={(e) => this.setState({
+                    checked: !this.state.checked
+                  })}
+                  />
+                Checkbox
+             </label>
+             <input type='radio' name='rd' value='1' defaultChecked/> Radio 1
+             <input type='radio' name='rd' value='2'/> Radio 2
+            </form>
+         </div>
+
          <Timer time={this.state.time}/>}
+
          <button onClick={() => {
            this.setState({ time: this.state.time + 10})
          }}>Change props</button>
@@ -51,6 +79,8 @@ class App extends Component {
       
         <LikeButton />
         <SearchButton />
+
+        <Button handleClick={() => console.log('clicou')}>Clique em mim</Button>
 
         <div onClick={() => this.setState({
            text: 'Outro texto'
